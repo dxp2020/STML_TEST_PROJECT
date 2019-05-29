@@ -1,0 +1,9 @@
+apply plugin: 'com.android.application'
+apply from: "../gradle_component/baseconfig.gradle"
+
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.MULALIBS.mula_base
+}
+
