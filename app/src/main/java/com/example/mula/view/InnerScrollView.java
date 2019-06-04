@@ -1,4 +1,4 @@
-package com.example.mula_test_project.view;
+package com.example.mula.view;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -12,8 +12,8 @@ import android.widget.ScrollView;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.ScreenUtils;
-import com.example.mula_test_project.R;
-import com.example.mula_test_project.utils.MotionEventUtils;
+import com.example.mula.R;
+import com.example.mula.utils.MotionEventUtils;
 import com.mula.base.tools.L;
 
 import java.util.ArrayList;
@@ -45,11 +45,6 @@ public class InnerScrollView extends ScrollView {
     public InnerScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
         isInitView = false;
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
         post(this::init);
     }
 

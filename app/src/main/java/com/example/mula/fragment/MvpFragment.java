@@ -1,4 +1,4 @@
-package com.example.mula_test_project.fragment;
+package com.example.mula.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

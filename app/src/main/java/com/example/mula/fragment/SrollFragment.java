@@ -1,10 +1,10 @@
-package com.example.mula_test_project.fragment;
+package com.example.mula.fragment;
 
 import android.widget.RelativeLayout;
 
-import com.example.mula_test_project.R;
-import com.example.mula_test_project.view.InnerScrollView;
-import com.example.mula_test_project.view.ParentScrollView;
+import com.example.mula.R;
+import com.example.mula.view.InnerScrollView;
+import com.example.mula.view.ParentScrollView;
 import com.mula.base.fragment.BaseFragment;
 
 import butterknife.BindView;

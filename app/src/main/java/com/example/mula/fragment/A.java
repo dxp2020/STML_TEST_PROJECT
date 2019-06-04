@@ -1,10 +1,10 @@
-package com.example.mula_test_project.fragment;
+package com.example.mula.fragment;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.mula_test_project.R;
+import com.example.mula.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.example.mula_test_project.utils;
+package com.example.mula.utils;
 
 import android.util.Log;
 import android.view.MotionEvent;

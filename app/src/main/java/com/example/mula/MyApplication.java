@@ -1,4 +1,4 @@
-package com.example.mula_test_project;
+package com.example.mula;
 
 import com.mula.base.BaseApplication;
 

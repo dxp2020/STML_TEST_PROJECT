@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.mula_test_project.view.ParentScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.mula.view.ParentScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sv_parent_view"
     android:layout_width="match_parent"
@@ -99,7 +99,7 @@
 
        </RelativeLayout>
 
-       <com.example.mula_test_project.view.InnerScrollView
+       <com.example.mula.view.InnerScrollView
            android:id="@+id/ll_bottom"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
@@ -582,8 +582,8 @@
 
                </LinearLayout>
            </LinearLayout>
-       </com.example.mula_test_project.view.InnerScrollView>
+       </com.example.mula.view.InnerScrollView>
 
    </LinearLayout>
 
-</com.example.mula_test_project.view.ParentScrollView>
+</com.example.mula.view.ParentScrollView>

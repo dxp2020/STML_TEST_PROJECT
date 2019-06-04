@@ -1,4 +1,4 @@
-package com.example.mula_test_project.view;
+package com.example.mula.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -57,8 +57,6 @@ public class ParentScrollView extends ScrollView {
                 isAllowScroll = true;
             }else if(isScrolledDown()){
                 isAllowScroll = false;
-            }else{
-                isAllowScroll = false;
             }
         //下拉
         }else{
@@ -66,8 +64,6 @@ public class ParentScrollView extends ScrollView {
                 isAllowScroll = false;
             }else if(isScrolledDown()){
                 isAllowScroll = true;
-            }else{
-                isAllowScroll = false;
             }
         }
     }
