@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.mula_test_project.fragment.A;
+import com.example.mula_test_project.fragment.SrollFragment;
 import com.mula.base.activity.BaseActivity;
 
 import butterknife.BindView;
@@ -37,7 +38,7 @@ public class MainActivity extends BaseActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Bundle bundle = new Bundle();
         bundle.putString("TAG", String.valueOf(++tag));
-        A a = new A();
+        SrollFragment a = new SrollFragment();
         a.setArguments(bundle);
         fragmentManager
                 .beginTransaction()

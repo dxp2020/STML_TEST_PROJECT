@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_top_no_driver"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+        >
+    <TextView
+        android:id="@+id/tv_payment_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="待支付"
+        android:textSize="13sp"
+        android:textColor="@color/color_00adef"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="19dp"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RM"
+        android:textSize="13sp"
+        android:textColor="@color/color_00adef"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="7dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_order_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="0.00"
+        android:textSize="23sp"
+        android:textColor="@color/color_00adef"
+        android:layout_marginTop="12dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_cost_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_valuation_rules"
+        android:layout_marginTop="21dp"
+        android:layout_marginLeft="2dp"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/tv_payment_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="现金支付"
+        android:textSize="13sp"
+        android:textColor="@color/color_00adef"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="13dp"
+        />
+</LinearLayout>

@@ -77,11 +77,11 @@ ext {
 
     //我们自己写的lib
     MULALIBS = [
-            mula_base          : "com.mula:base:1.1.328",
-            mula_photo         : "com.mula:photo:1.0.328",
-            mula_emoj          : "com.mula:emoj:1.0.328",
-            mula_imagepreview  : "com.mula:imagepreview:1.0.328",
-            mula_lbsloc        : "com.mula:lbsloc:1.0.328",
+            mula_base          : "com.mula:base:1.1.331",
+            mula_photo         : "com.mula:photo:1.0.331",
+            mula_emoj          : "com.mula:emoj:1.0.331",
+            mula_imagepreview  : "com.mula:imagepreview:1.0.331",
+            mula_lbsloc        : "com.mula:lbsloc:1.0.331",
             mula_mqtt          : "com.mula:mqtt:1.0.209",
             mula_retrofit      : "com.mula:retrofit:1.0.29",
             mula_refresh       : "com.mula:refresh:1.0.8",
