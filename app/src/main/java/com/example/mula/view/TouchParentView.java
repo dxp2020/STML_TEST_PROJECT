@@ -14,12 +14,12 @@ public class TouchParentView extends ViewGroup {
     private ViewGroup topView;
     private ViewGroup bottomView;
     private boolean isInitLocation;//是否初始化了位置
-    private int bottomTopHeight = ScreenUtils.dip2px(300);
+    private int bottomViewDefaultTop = ScreenUtils.getScreenHeight()-ScreenUtils.dip2px(300);
+    private int topViewDefaultBottom;
     private float lastX;
     private float lastY;
     private float downX;
     private float downY;
-    private int screenHeight = ScreenUtils.getScreenHeight();
 
     public TouchParentView(Context context) {
         this(context,null);
@@ -52,10 +52,10 @@ public class TouchParentView extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         if(!isInitLocation){
             isInitLocation = true;
+            topViewDefaultBottom = topView.getMeasuredHeight();
             topView.layout(0,0,topView.getMeasuredWidth(),topView.getMeasuredHeight());
-            int bottomViewTop = ScreenUtils.getScreenHeight()-bottomTopHeight;
-            int bottomViewBottom = bottomViewTop + bottomView.getMeasuredHeight();
-            bottomView.layout(0,ScreenUtils.getScreenHeight()-bottomTopHeight,bottomView.getMeasuredWidth(),bottomViewBottom);
+            int bottomViewBottom = bottomViewDefaultTop + bottomView.getMeasuredHeight();
+            bottomView.layout(0,bottomViewDefaultTop,bottomView.getMeasuredWidth(),bottomViewBottom);
         }
     }
 
@@ -65,11 +65,7 @@ public class TouchParentView extends ViewGroup {
             case MotionEvent.ACTION_DOWN:
                 return isValidArea(event);
             case MotionEvent.ACTION_MOVE:
-                if(isConnectTopBottom()){
-
-                }else{
-                    moveBottomView(event);
-                }
+                moveView(event);
                 break;
             case MotionEvent.ACTION_UP:
                 break;
@@ -77,22 +73,38 @@ public class TouchParentView extends ViewGroup {
         return true;
     }
 
-    private void moveBottomView(MotionEvent event) {
+    private void moveView(MotionEvent event) {
         int intevalY = (int) (event.getY()-lastY);
-        L.e("intevalY--->"+intevalY+" bottomView.getBottom()-->"+bottomView.getBottom()+" getBottom()-->"+getBottom());
-        //拉到最底部
-        if(bottomView.getBottom()<=getBottom()&&intevalY<=0){
+        if(intevalY==0){
             return;
-        //拉到顶部
-        }else if(bottomView.getBottom()<=getBottom()&&intevalY<=0){
-            return;
-        }else if((intevalY+bottomView.getBottom())<getBottom()){
-            intevalY = bottomView.getBottom() - getBottom();
         }
         lastX = event.getX();
         lastY = event.getY();
-
+//        L.e("intevalY--->"+intevalY+" bottomView.getBottom()-->"+bottomView.getBottom()+" getBottom()-->"+getBottom());
+        //拉到最底部
+        if(bottomView.getTop()>=bottomViewDefaultTop&&intevalY>=0){
+            return;
+        //最大可以拉到与默认顶部平齐，对intevalY进行修正
+        }else if((intevalY+bottomView.getTop())>=bottomViewDefaultTop){
+            intevalY = bottomViewDefaultTop - bottomView.getTop();
+        //拉到最顶部
+        }else if(bottomView.getBottom()<=getBottom()&&intevalY<0){
+            return;
+        //最大可以拉到与view底部平齐，对intevalY进行修正
+        }else if((intevalY+bottomView.getBottom())<=getBottom()){
+            intevalY = getBottom() - bottomView.getBottom();
+        }
         bottomView.offsetTopAndBottom(intevalY);
+
+        if(bottomView.getTop()<=topView.getBottom()){
+            intevalY = bottomView.getTop() - topView.getBottom();
+            topView.offsetTopAndBottom(intevalY);
+        }else if(intevalY>0&&(topView.getBottom()+intevalY)<topViewDefaultBottom){
+            topView.offsetTopAndBottom(intevalY);
+        }else if(topView.getBottom()<topViewDefaultBottom&&(topView.getBottom()+intevalY)>topViewDefaultBottom){
+            intevalY = topViewDefaultBottom - topView.getBottom();
+            topView.offsetTopAndBottom(intevalY);
+        }
     }
 
     private boolean isValidArea(MotionEvent event) {
@@ -103,11 +115,7 @@ public class TouchParentView extends ViewGroup {
         float x = lastX;
         float y = lastY;
 
-        return isBottomViewArea(x, y) || !isConnectTopBottom();
-    }
-
-    private boolean isConnectTopBottom() {
-        return bottomView.getTop()==topView.getBottom();
+        return isBottomViewArea(x, y);
     }
 
     private boolean isBottomViewArea(float x,float y){
