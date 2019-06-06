@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.mula.base.tools.L;
@@ -44,7 +45,13 @@ public class TouchParentView extends ViewGroup {
         int count = getChildCount();
         for(int i = 0; count > i; i++){
             View view = getChildAt(i);
-            measureChild(view,widthMeasureSpec,heightMeasureSpec);
+            //制定测量规则 参数表示size + mode
+            int width = View.MeasureSpec.makeMeasureSpec(ScreenUtils.getScreenWidth(),
+                    MeasureSpec.EXACTLY);
+            int height = View.MeasureSpec.makeMeasureSpec(0,
+                    View.MeasureSpec.UNSPECIFIED);
+            //调用measure方法之后就可以获取宽高
+            view.measure(width, height);
         }
     }
 
